@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buckshot Roulette</title>
+    <script>
+        // Define required functions (assuming p5.js style)
+        function textSize(size) {
+            // Dummy implementation
+            console.log("Setting text size to:", size);
+        }
+
+        function text(msg, x, y) {
+            // Dummy implementation
+            console.log(`Text: ${msg} at (${x}, ${y})`);
+        }
+
+        function ellipse(x, y, w, h) {
+            // Dummy implementation
+            console.log(`Ellipse at (${x}, ${y}) with width ${w} and height ${h}`);
+        }
+
+        function randomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function playGame() {
+            var hp = 3;
+
+            function checkGuess() {
+                var x = randomNumber(1, 5);
+                var p = prompt("Pick a number 1-5:");
+                if (x == p) {
+                    alert("-1 hp");
+                    hp -= 1;
+                    if (hp == 0) {
+                        alert("You are dead");
+                        return true;
+                    }
+                } else {
+                    alert("You survived");
+                }
+                return false;
+            }
+
+            for (let i = 0; i < 5; i++) {
+                if (checkGuess()) {
+                    break;
+                }
+            }
+
+            if (hp > 0) {
+                alert("You survived the game with " + hp + " hp remaining!");
+            }
+        }
+
+        // Drawing and initializing
+        function setup() {
+            textSize(30);
+            text("Buckshot Roulette", 100, 50);
+            ellipse(200, 200, 200, 200);
+            playGame();
+        }
+
+        window.onload = setup;
+    </script>
+</head>
+<body>
+</body>
+</html>
